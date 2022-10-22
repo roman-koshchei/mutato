@@ -2,7 +2,7 @@
 
 How I acspect it to work. It's aspesially comfortable during working with arrays.
 
-```ts
+```tsx
 const SwapComponent = () => {
   const [items, mutateItems] = useMutato<string[]>(['a', 'b'])
 
