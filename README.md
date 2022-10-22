@@ -14,10 +14,10 @@ const SwapComponent = () => {
   })
 
   // simple swap of 2 items
-  const swap = () => mutateItems(items => {
-    const first = items[0]
-    items[0] = items[1]
-    items[1] = first
+  const swap = () => mutateItems(store => {
+    const first = store.items[0]
+    store.items[0] = store.items[1]
+    store.items[1] = store.first
   })
 
   return ...
