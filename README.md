@@ -3,8 +3,15 @@
 How I acspect it to work. It's aspesially comfortable during working with arrays. If you need real mutable state managment solution check [valtio](https://github.com/pmndrs/valtio).
 
 ```tsx
+
+type Store = {
+  items: string[]
+}
+
 const SwapComponent = () => {
-  const [items, mutateItems] = useMutato<string[]>(['a', 'b'])
+  const [store, mutateStore] = useMutato<Store>({
+    items: ['a', 'b', 'c']
+  })
 
   // simple swap of 2 items
   const swap = () => mutateItems(items => {
@@ -13,6 +20,6 @@ const SwapComponent = () => {
     items[1] = first
   })
 
-  return items.map(item => <div>{item}</div>)
+  return ...
 }
 ```
