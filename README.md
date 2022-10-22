@@ -1,6 +1,6 @@
 ![](assets/mutato-github.png)
 
-How I acspect it to work. It's aspesially comfortable during working with arrays. If you need real mutable state managment solution check [valtio](https://github.com/pmndrs/valtio).
+How I expect it to work. It's especially comfortable during working with arrays. If you need a real mutable state management solution check [valtio](https://github.com/pmndrs/valtio).
 
 ```tsx
 
