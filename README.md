@@ -1,8 +1,6 @@
-<p align='center'>
-
+<p align="center">
+  <img src='pinched-fingers-light.svg' height=200/>
 </p>
 
 # MUTATO
-stato mutavely
-
-React hook to work with state like with mutable object
+React hook to work with state like with mutable object. Name from italian: stato mutevole
