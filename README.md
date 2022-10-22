@@ -9,7 +9,7 @@ type Store = {
 }
 
 const SwapComponent = () => {
-  const [store, mutateStore] = useMutato<Store>({
+  const [store, mutateStore] = useStato<Store>({
     items: ['a', 'b', 'c']
   })
 
