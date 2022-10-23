@@ -4,17 +4,15 @@ How I expect it to work. It's especially comfortable during working with arrays.
 
 ```tsx
 
-type Store = {
-  items: string[]
+let store = {
+  items: [34, 45, 87]
 }
 
 const SwapComponent = () => {
-  const [store, mutateStore] = useStato<Store>({
-    items: ['a', 'b', 'c']
-  })
+  const mutate = useMutato(store)
 
   // simple swap of 2 items
-  const swap = () => mutateItems(store => {
+  const swap = () => mutate(store => {
     const first = store.items[0]
     store.items[0] = store.items[1]
     store.items[1] = store.first

@@ -1,27 +1,24 @@
-import { useState } from 'react'
-import { useStato } from './mutato'
+import { Counter } from './components/Counter'
+import { IndependentCounter } from './components/IndependentCounter'
+import { useMutato } from './lib/useMutato'
+import { store } from './utils/store'
 
 function App() {
-  const [store, mutateStore] = useStato({
-    count: 0,
-    nums: [34, 45, 87],
-    selected: -1
-  })
+  const mutateStore = useMutato(store)
 
   const increase = () => {
+    // change store with component rerender
     mutateStore(store => store.count += 1)
   }
 
   return (
     <div className='center'>
 
-      <div>
-        Not best case for Mutato, but common as an example
-        <div className='flex'>
-          <span>Count: {store.count}</span>
-          <button onClick={increase}>+</button>
-        </div>
-      </div>
+      <Counter increase={increase} count={store.count} />
+
+      <br />
+
+      <IndependentCounter />
 
       <br />
 
@@ -42,7 +39,9 @@ function App() {
               })
             }
 
-            return <button onClick={click} style={store.selected == i ? ({ backgroundColor: 'steelblue' }) : undefined}>{num}</button>
+            return <button key={num} onClick={click}
+              style={store.selected == i ? ({ backgroundColor: 'steelblue' }) : undefined}>
+              {num}</button>
           })}
 
         </div>
