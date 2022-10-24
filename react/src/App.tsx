@@ -1,10 +1,12 @@
+import { useState } from 'react'
 import { Counter } from './components/Counter'
 import { IndependentCounter } from './components/IndependentCounter'
+import { useUpdate } from './lib'
 import { useMutato } from './lib/useMutato'
 import { store } from './utils/store'
 
 function App() {
-  const mutateStore = useMutato(store)
+  const mutateStore = useMutato('store', store)
 
   const increase = () => {
     // change store with component rerender

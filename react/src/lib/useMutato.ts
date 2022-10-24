@@ -1,18 +1,33 @@
+import { Mutato } from './types'
 import { useUpdate } from './useUpdate'
 
-type MutateOperation<T> = (current: T) => void
+/*
 
-type Mutato<T> = (mutateOperation: MutateOperation<T>) => void
+useMutato:
+  - rerender parent components
+  - can be called from component without passing mutate function as prop
+  - need a bit more memory,
+  because bucket save functions to rerender of highest component
 
-const useMutato = <T>(store: T): Mutato<T> => {
-  const forceUpdate = useUpdate()
+*/
 
-  const mutate: Mutato<T> = (mutateOperetion) => {
+let mutatoBucket = new Map<string, () => void>()
+
+const newUpdate = (key: string) => {
+  const update = useUpdate()
+  mutatoBucket.set(key, update)
+  return update
+}
+
+const useMutato = <T>(key: string, store: T): Mutato<T> => {
+  const update = mutatoBucket.get(key) ?? newUpdate(key)
+
+  // return function to mutate state
+  return (mutateOperetion) => {
     mutateOperetion(store)
-    forceUpdate()
+    update()
+    mutatoBucket.delete(key)
   }
-
-  return mutate
 }
 
 export { useMutato }

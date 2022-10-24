@@ -1,13 +1,12 @@
-import { useMutato } from '../lib'
+import { useMutato } from '../lib/useMutato'
 import { store } from '../utils/store'
 
 /*
 It doesn's update upper 
-
 */
 
 const IndependentCounter = () => {
-  const mutate = useMutato(store)
+  const mutate = useMutato('store', store)
 
   const increase = () => mutate(store => store.count += 1)
 
