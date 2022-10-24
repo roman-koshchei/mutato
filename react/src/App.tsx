@@ -1,7 +1,4 @@
-import { useState } from 'react'
-import { Counter } from './components/Counter'
-import { IndependentCounter } from './components/IndependentCounter'
-import { useUpdate } from './lib'
+import { Counter, IndependentCounter } from './components'
 import { useMutato } from './lib/useMutato'
 import { store } from './utils/store'
 
@@ -42,7 +39,7 @@ function App() {
             }
 
             return <button key={num} onClick={click}
-              style={store.selected == i ? ({ backgroundColor: 'steelblue' }) : undefined}>
+              style={store.selected == i ? { backgroundColor: 'steelblue' } : undefined}>
               {num}</button>
           })}
 
