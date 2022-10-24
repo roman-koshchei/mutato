@@ -1,6 +1,16 @@
 import { Mutato } from './types'
 import { useUpdate } from './useUpdate'
 
+/*
+
+useMutato:
+  - rerender parent components
+  - can be called from component without passing mutate function as prop
+  - need a bit more memory,
+  because bucket save functions to rerender of highest component
+
+*/
+
 let mutatoBucket = new Map<string, () => void>()
 
 const newUpdate = (key: string) => {
