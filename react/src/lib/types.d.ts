@@ -7,8 +7,6 @@ type Store<T> = T & { _key: string }
 
 type I<T> = Exclude<keyof T, '_key'>
 
-type I<T> = Exclude<keyof T, '_key'>
-
 type A<T> = {
   [key in I<T>]: T[key]
 }
