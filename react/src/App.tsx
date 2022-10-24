@@ -1,19 +1,19 @@
 import { Counter, IndependentCounter } from './components'
 import { useMutato } from './lib/useMutato'
-import { store } from './utils/store'
+import { counterStore, numsStore } from './utils/store'
 
 function App() {
-  const mutateStore = useMutato('store', store)
+  const mutateNums = useMutato(numsStore)
+  const mutateCounter = useMutato(counterStore)
 
   const increase = () => {
-    // change store with component rerender
-    mutateStore(store => store.count += 1)
+    mutateCounter(counter => counter.val += 1)
   }
 
   return (
     <div className='center'>
 
-      <Counter increase={increase} count={store.count} />
+      <Counter increase={increase} count={counterStore.val} />
 
       <br />
 
@@ -25,9 +25,9 @@ function App() {
         Real situation where Mutato is cool. <br />
         Click on one item and then another. They will be swaped.
         <div className='flex'>
-          {store.nums.map((num, i) => {
+          {numsStore.nums.map((num, i) => {
             const click = () => {
-              mutateStore(store => {
+              mutateNums(store => {
                 if (store.selected == -1) {
                   store.selected = i
                 } else {
@@ -39,7 +39,7 @@ function App() {
             }
 
             return <button key={num} onClick={click}
-              style={store.selected == i ? { backgroundColor: 'steelblue' } : undefined}>
+              style={numsStore.selected == i ? { backgroundColor: 'steelblue' } : undefined}>
               {num}</button>
           })}
 

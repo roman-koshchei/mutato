@@ -1,4 +1,4 @@
-import { Mutato, Store } from './types'
+import { Mutato } from './types'
 import { useUpdate } from './useUpdate'
 
 /*
@@ -11,26 +11,24 @@ useMutato:
 
 */
 
-let mutatoBucket = new Map<string, () => void>()
+let mutatoBucket = new Map<any, () => void>()
 
-// what? comfortable to create store
-const mutato = <T>(store: Store<T>): Store<T> => store
-
-const newUpdate = (key: string) => {
+const newUpdate = (key: any) => {
   const update = useUpdate()
   mutatoBucket.set(key, update)
   return update
 }
 
-const useMutato = <T>(store: Store<T>): Mutato<T> => {
-  const update = mutatoBucket.get(store._key) ?? newUpdate(store._key)
+const useMutatoNoname = <T>(store: T): Mutato<T> => {
+  const update = mutatoBucket.get(store) ?? newUpdate(store)
 
   // return function to mutate state
   return (mutateOperetion) => {
+    console.log(store)
     mutateOperetion(store)
     update()
-    mutatoBucket.clear()
+    mutatoBucket.delete(store)
   }
 }
 
-export { useMutato, mutato }
+export { useMutatoNoname }
