@@ -1,18 +1,23 @@
+import { Mutato } from './types'
 import { useUpdate } from './useUpdate'
 
-type MutateOperation<T> = (current: T) => void
+let mutatoBucket = new Map<string, () => void>()
 
-type Mutato<T> = (mutateOperation: MutateOperation<T>) => void
+const newUpdate = (key: string) => {
+  const update = useUpdate()
+  mutatoBucket.set(key, update)
+  return update
+}
 
-const useMutato = <T>(store: T): Mutato<T> => {
-  const forceUpdate = useUpdate()
+const useMutato = <T>(key: string, store: T): Mutato<T> => {
+  const update = mutatoBucket.get(key) ?? newUpdate(key)
 
-  const mutate: Mutato<T> = (mutateOperetion) => {
+  // return function to mutate state
+  return (mutateOperetion) => {
     mutateOperetion(store)
-    forceUpdate()
+    update()
+    mutatoBucket.delete(key)
   }
-
-  return mutate
 }
 
 export { useMutato }
