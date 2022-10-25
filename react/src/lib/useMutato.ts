@@ -11,22 +11,24 @@ useMutato:
 
 */
 
-let mutatoBucket = new Map<string, () => void>()
+let bucket = new Map<object, undefined | (() => void)>()
 
-const newUpdate = (key: string) => {
+const newUpdate = (key: object) => {
   const update = useUpdate()
-  mutatoBucket.set(key, update)
+  bucket.set(key, update)
   return update
 }
 
-const useMutato = <T>(key: string, store: T): Mutato<T> => {
-  const update = mutatoBucket.get(key) ?? newUpdate(key)
+const useMutato = <T extends object>(store: T): Mutato<T> => {
+  const update = bucket.get(store) ?? newUpdate(store)
+
+  // console.log('tucket has', store, tucket.has(store), 'value', tucket.get(store))
 
   // return function to mutate state
   return (mutateOperetion) => {
     mutateOperetion(store)
     update()
-    mutatoBucket.delete(key)
+    bucket.clear()
   }
 }
 
