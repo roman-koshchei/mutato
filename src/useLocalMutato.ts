@@ -1,4 +1,4 @@
-import { Mutato } from './types'
+import { Mutate } from './types'
 import { useUpdate } from './useUpdate'
 
 /*
@@ -9,10 +9,10 @@ useLocalMutato:
 
 */
 
-const useLocalMutato = <T>(store: T): Mutato<T> => {
+const useLocalMutato = <T>(store: T): Mutate<T> => {
   const forceUpdate = useUpdate()
 
-  const mutate: Mutato<T> = (mutateOperetion) => {
+  const mutate: Mutate<T> = (mutateOperetion) => {
     mutateOperetion(store)
     forceUpdate()
   }

@@ -1,5 +1,5 @@
 import { useUpdate } from './useUpdate'
-import { Mutato } from './types'
+import { UseMutato } from './types'
 
 /*
 
@@ -13,19 +13,11 @@ useMutato:
 
 const bucket = new Map<object, undefined | (() => void)>()
 
-// create new update and set in into bucket
-// const newUpdate = (key: object) => {
-//   const update = useUpdate()
-//   bucket.set(key, update)
-//   return update
-// }
-
-const useMutato = <T extends object>(store: T): Mutato<T> => {
-  const newUpdate = useUpdate() // should, because hooks can't be conditional
+const useMutato: UseMutato = (store) => {
+  // should, because hooks can't be conditional
+  const newUpdate = useUpdate()
 
   const update = bucket.get(store) ?? newUpdate
-
-  // console.log('tucket has', store, tucket.has(store), 'value', tucket.get(store))
 
   // return function to mutate state
   return (mutateOperetion) => {

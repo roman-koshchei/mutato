@@ -1,6 +1,6 @@
 {
   "name": "mutato",
-  "version": "0.4.0",
+  "version": "0.4.4",
   "description": "Hook to work with state like with mutable object",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
