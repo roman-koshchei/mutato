@@ -1,0 +1,53 @@
+{
+  "name": "mutato",
+  "version": "0.4.0",
+  "description": "Hook to work with state like with mutable object",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint"
+  },
+  "keywords": [
+    "react",
+    "state",
+    "mutable",
+    "manager",
+    "management",
+    "store"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roman-koshchei/mutato.git"
+  },
+  "author": "Roman Koshchei",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/roman-koshchei/mutato/issues"
+  },
+  "homepage": "https://github.com/roman-koshchei/mutato#readme",
+  "devDependencies": {
+    "@types/react": "^18.0.22",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "eslint": "^8.26.0",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.8.4"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ]
+}

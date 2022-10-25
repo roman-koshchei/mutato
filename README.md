@@ -8,7 +8,6 @@ Shared state (rerender parent components)
 
 ```tsx
 
-const storeKey = 'unique-store-key'
 let store = {
   nums: [34, 45, 87],
   selected: -1
@@ -21,7 +20,7 @@ const Parent = () => (
 )
 
 const Child = ({val, i}: {val:number, i: number}) => {
-  const mutate = useMutato(storeKey, store)
+  const mutate = useMutato(store)
 
   // swap of 2 items if one selected
   const swap = () => mutate(store => {
