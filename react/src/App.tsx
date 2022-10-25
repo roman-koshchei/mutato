@@ -1,6 +1,6 @@
 import { Counter, IndependentCounter } from './components'
-import { useMutato } from './lib/useMutato'
-import { counterStore, numsStore } from './utils/store'
+import { useMutato } from './lib'
+import { counterStore, numsStore } from './utils/stores'
 
 function App() {
   const mutateNums = useMutato(numsStore)

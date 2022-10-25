@@ -1,5 +1,5 @@
-import { useMutato } from '../lib/useMutato'
-import { counterStore, numsStore } from '../utils/store'
+import { useMutato } from '../lib'
+import { counterStore, numsStore } from '../utils/stores'
 
 /*
 It doesn's update upper 
