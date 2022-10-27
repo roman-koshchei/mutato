@@ -1,5 +1,5 @@
-import { mutate, useMutato } from 'mutato'
-import { numsStore, primitiveStore } from '../utils/stores'
+import { mutate, useMutato } from '../mutato-local'
+import { primitiveStore, numsStore } from '../utils/stores'
 
 /*
 It doesn's update upper 
@@ -20,8 +20,7 @@ const IndependentCounter = () => {
 
   return (
     <div>
-      Independent counter. It updates parent component. <br />
-      And can mutate numsStore
+      Independent counter. It doesn't update parent component for now.
       <div className='flex'>
         <span>Count: {primitiveStore.num}</span>
         <button onClick={increase}>+</button>

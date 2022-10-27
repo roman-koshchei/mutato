@@ -1,8 +1,8 @@
 import { Counter, IndependentCounter, Input } from './components'
 import { primitiveStore, numsStore } from './utils/stores'
-import { mutate, useMutato } from 'mutato'
+import { mutate, useMutato } from './mutato-local'
 
-const App = () => {
+function App() {
   useMutato(numsStore, primitiveStore)
 
   const increase = () => {

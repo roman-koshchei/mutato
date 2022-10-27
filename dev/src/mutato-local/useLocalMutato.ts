@@ -9,11 +9,11 @@ useLocalMutato:
 
 */
 
-const useLocalMutato = <T>(): Mutate<T> => {
+const useLocalMutato = <T>(store: T): Mutate<T> => {
   const forceUpdate = useUpdate()
 
   const mutate: Mutate<T> = (mutateOperetion) => {
-    mutateOperetion()
+    mutateOperetion(store)
     forceUpdate()
   }
 
