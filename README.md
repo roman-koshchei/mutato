@@ -13,17 +13,24 @@ let store = {
   selected: -1
 }
 
-const Parent = () => (
-  <div>
+const Parent = () => {
+  // say that we want track chenges of store
+  useMutato(store)
+
+  return <div>
     {store.nums.map((num, i) => <Child key={num} val={num} i={i} />)}
   </div>
-)
+}
+
 
 const Child = ({val, i}: {val:number, i: number}) => {
-  const mutate = useMutato(store)
+  // can not call useMutato if you sure
+  // that parent component will call useMutato
+  // but in that example let's do it
+  useMutato(store)
 
   // swap of 2 items if one selected
-  const swap = () => mutate(store => {
+  const swap = () => mutate(() => {
     if (store.selected == -1) {
       store.selected = i
     } else {
@@ -31,7 +38,7 @@ const Child = ({val, i}: {val:number, i: number}) => {
       store.nums[store.selected] = num
       store.selected = -1
     }
-  })
+  }, [store])
 
   return (
     <button onClick={click}
