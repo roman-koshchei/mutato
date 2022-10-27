@@ -3,8 +3,9 @@ let numsStore = {
   selected: -1
 }
 
-let counterStore = {
-  val: 0
+let primitiveStore = {
+  num: 0,
+  str: ''
 }
 
-export { numsStore, counterStore }
+export { numsStore, primitiveStore }

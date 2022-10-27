@@ -1,23 +1,27 @@
-import { Counter, IndependentCounter } from './components'
-import { counterStore, numsStore } from './utils/stores'
-import { useMutato } from 'mutato'
+import { Counter, IndependentCounter, Input } from './components'
+import { primitiveStore, numsStore } from './utils/stores'
+import { mutate, useMutato } from 'mutato'
 
-function App() {
-  const mutateNums = useMutato(numsStore)
-  const mutateCounter = useMutato(counterStore)
+const App = () => {
+  useMutato(numsStore, primitiveStore)
 
   const increase = () => {
-    mutateCounter(counter => counter.val += 1)
+    mutate(() => primitiveStore.num += 1, [primitiveStore])
   }
 
   return (
     <div className='center'>
 
-      <Counter increase={increase} count={counterStore.val} />
+      <Counter increase={increase} count={primitiveStore.num} />
 
       <br />
 
       <IndependentCounter />
+
+      <br />
+
+      Test inputs: {primitiveStore.str}
+      <Input />
 
       <br />
 
@@ -27,15 +31,15 @@ function App() {
         <div className='flex'>
           {numsStore.nums.map((num, i) => {
             const click = () => {
-              mutateNums(store => {
-                if (store.selected == -1) {
-                  store.selected = i
+              mutate(() => {
+                if (numsStore.selected == -1) {
+                  numsStore.selected = i
                 } else {
-                  store.nums[i] = store.nums[store.selected]
-                  store.nums[store.selected] = num
-                  store.selected = -1
+                  numsStore.nums[i] = numsStore.nums[numsStore.selected]
+                  numsStore.nums[numsStore.selected] = num
+                  numsStore.selected = -1
                 }
-              })
+              }, [numsStore])
             }
 
             return <button key={num} onClick={click}

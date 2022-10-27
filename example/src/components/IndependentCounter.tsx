@@ -1,19 +1,29 @@
-import { useMutato } from 'mutato'
-import { counterStore } from '../utils/stores'
+import { mutate, useMutato } from 'mutato'
+import { numsStore, primitiveStore } from '../utils/stores'
 
 /*
 It doesn's update upper 
 */
 
 const IndependentCounter = () => {
-  const mutate = useMutato(counterStore)
-  const increase = () => mutate(counter => counter.val += 1)
+  // define that the component based on value from counter store
+  useMutato(primitiveStore)
+
+  // mutate stores
+  const increase = () => mutate(() => {
+    primitiveStore.num += 1
+
+    // can mutate another store
+    numsStore.selected = 0
+  }, [primitiveStore, numsStore])
+
 
   return (
     <div>
-      Independent counter. It doesn't update parent component for now.
+      Independent counter. It updates parent component. <br />
+      And can mutate numsStore
       <div className='flex'>
-        <span>Count: {counterStore.val}</span>
+        <span>Count: {primitiveStore.num}</span>
         <button onClick={increase}>+</button>
       </div>
     </div>
