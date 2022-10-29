@@ -1,0 +1,41 @@
+body {
+  overflow: hidden;
+  background-color: steelblue;
+  color: whitesmoke;
+  font-size: x-large;
+  font-family: sans-serif;
+}
+
+.center {
+  height: 100vh;
+  display: grid;
+  place-content: center;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+button {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  border: 0;
+}
+
+.selected-btn {
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+input {
+  padding: 5px;
+  border: 0;
+  outline: none;
+}
