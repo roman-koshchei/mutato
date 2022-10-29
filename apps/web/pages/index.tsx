@@ -15,6 +15,8 @@ export default function Web() {
         <h1>MUTATO examples</h1>
         <a href='https://github.com/roman-koshchei/mutato'
           target='_blank' rel='noopener noreferrer'>GITHUB</a>
+        <a href='https://www.npmjs.com/package/mutato'
+          target='_blank' rel='noopener noreferrer'>NPM</a>
       </div>
 
       <ChildCounter count={simpleStore.num} increase={increase} />

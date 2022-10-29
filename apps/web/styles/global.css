@@ -39,3 +39,8 @@ input {
   border: 0;
   outline: none;
 }
+
+a {
+  color: white;
+  text-decoration: none;
+}
