@@ -11,6 +11,9 @@ export default function Web() {
 
   return <>
     <div className='col'>
+      <div>
+        Mutato is mutable react state. Look at examples (code can be found on github)
+      </div>
 
       <div>
         Real situation where Mutato is cool. Click on one item and then another to swap
