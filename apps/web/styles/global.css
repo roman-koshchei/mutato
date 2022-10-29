@@ -6,16 +6,32 @@ body {
   font-family: sans-serif;
 }
 
-.center {
+.container {
   height: 100vh;
-  display: grid;
-  place-content: center;
+  max-width: 960px;
+  margin: auto;
+  margin-bottom: 50px;
 }
+
+nav {
+  margin: 25px 0 50px 0;
+}
+
+.gap-3 {
+  gap: 3rem;
+} 
 
 .flex {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3rem;
 }
 
 .between {
@@ -23,24 +39,25 @@ body {
 }
 
 button {
-  width: 2rem;
+  font-size:medium;
   height: 2rem;
+  width: 3rem;
   cursor: pointer;
   border: 0;
+  border-radius: 2px;
 }
+
 
 .selected-btn {
   background-color: transparent;
-  border: 1px solid white;
-}
-
-input {
-  padding: 5px;
-  border: 0;
-  outline: none;
-}
-
-a {
+  border: 2px solid white;
   color: white;
-  text-decoration: none;
+}
+
+h1 {
+  margin: 0;
+}
+
+.mt {
+  margin-top: 1rem;
 }

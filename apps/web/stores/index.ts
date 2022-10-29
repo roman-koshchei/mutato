@@ -1,5 +1,5 @@
 let arrayStore = {
-  nums: [29, 10, 22],
+  nums: [29, 10, 22, 87, 99, 23],
   selected: -1
 }
 

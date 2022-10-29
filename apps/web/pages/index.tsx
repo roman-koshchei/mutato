@@ -1,5 +1,5 @@
 import { mutate, useMutato } from "mutato"
-import { ChildCounter, IndependentCounter, Input, SwapBtn } from '../components';
+import { ChildCounter, IndependentCounter, Input, Navbar, SwapBtn } from '../components';
 import { arrayStore, simpleStore } from '../stores';
 
 export default function Web() {
@@ -10,34 +10,29 @@ export default function Web() {
   }, [simpleStore])
 
   return <>
-    <div className='center'>
-      <div className='flex between'>
-        <h1>MUTATO examples</h1>
-        <a href='https://github.com/roman-koshchei/mutato'
-          target='_blank' rel='noopener noreferrer'>GITHUB</a>
-        <a href='https://www.npmjs.com/package/mutato'
-          target='_blank' rel='noopener noreferrer'>NPM</a>
-      </div>
-
-      <ChildCounter count={simpleStore.num} increase={increase} />
-
-      <br />
-
-      <IndependentCounter />
-
-      <br />
-
-      Test inputs: {simpleStore.str}
-      <Input />
-
-      <br />
+    <div className='col'>
 
       <div>
-        Real situation where Mutato is cool. <br />
-        Click on one item and then another. They will be swaped.
-        <div className='flex'>
+        Real situation where Mutato is cool. Click on one item and then another to swap
+        <div className='flex between mt'>
           {arrayStore.nums.map((num, i) => <SwapBtn key={num} num={num} i={i} />)}
         </div>
+      </div>
+
+      <div className='flex between'>
+        Counter when pass values (state) into component
+        <ChildCounter count={simpleStore.num} increase={increase} />
+      </div>
+
+      <div className='flex between'>
+        Independent counter. It updates parent component. <br />
+        And can mutate store with array of nums
+        <IndependentCounter />
+      </div>
+
+      <div>
+        <div>Input: {simpleStore.str}</div>
+        <Input />
       </div>
     </div>
   </>

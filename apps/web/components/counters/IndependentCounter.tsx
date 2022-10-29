@@ -18,13 +18,9 @@ const IndependentCounter = () => {
 
 
   return (
-    <div>
-      Independent counter. It updates parent component. <br />
-      And can mutate store with array of nums
-      <div className='flex'>
-        <span>Count: {simpleStore.num}</span>
-        <button onClick={increase}>+</button>
-      </div>
+    <div className='flex gap-3'>
+      <span>Count: {simpleStore.num}</span>
+      <button onClick={increase}>+</button>
     </div>
   )
 }

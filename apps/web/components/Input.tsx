@@ -10,7 +10,17 @@ const Input = () => {
     simpleStore.str = e.target.value
   }, [simpleStore])
 
-  return <input type="text" value={simpleStore.str} onChange={change} />
+  return <div style={{
+    padding: '10px', backgroundColor: 'white',
+    borderRadius: '2px', marginTop: '1rem'
+  }}>
+    <input type="text" value={simpleStore.str} onChange={change}
+      style={{
+        border: 0, fontSize: '1.2rem',
+        outline: 'none', width: '100%',
+      }}
+    />
+  </div>
 }
 
 export { Input }

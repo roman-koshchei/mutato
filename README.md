@@ -2,6 +2,11 @@
 
 How I expect it to work. It's especially comfortable during working with arrays. Motivated by [valtio](https://github.com/pmndrs/valtio).
 
+```bash
+npm install mutato
+# or
+yarn add mutato
+```
 
 ## useMutato
 Shared state (rerender parent components)
