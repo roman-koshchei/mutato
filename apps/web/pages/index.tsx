@@ -1,5 +1,5 @@
 import { mutate, useMutato } from "mutato"
-import { ChildCounter, IndependentCounter, Input, Navbar, SwapBtn } from '../components';
+import { ChildCounter, DeepCounter, IndependentCounter, Input, Navbar, SwapBtn } from '../components';
 import { arrayStore, simpleStore } from '../stores';
 
 export default function Web() {
@@ -13,6 +13,11 @@ export default function Web() {
     <div className='col'>
       <div>
         Mutato is mutable react state. Look at examples (code can be found on github)
+      </div>
+
+      <div className='flex between'>
+        Deep
+        <DeepCounter />
       </div>
 
       <div>
